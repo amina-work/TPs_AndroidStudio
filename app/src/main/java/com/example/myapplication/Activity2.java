@@ -20,16 +20,50 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity_2);
 
         btn = (Button)findViewById(R.id.goBack);
+
+        add = (Button)findViewById(R.id.add);
+        mul = (Button)findViewById(R.id.mul);
+        sub = (Button)findViewById(R.id.sub);
+
+        Intent intent = getIntent();
+        int num1 = intent.getIntExtra("n1", 0); //default value is necessary for code to work
+        int num2 = intent.getIntExtra("n2", 0);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivityMain();
             }
         });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int sum = num1 + num2;
+                intent.putExtra("sum", sum);
+                openActivityMain();
+            }
+        });
+        mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int sum = num1 * num2;
+                intent.putExtra("sum", sum);
+                openActivityMain();
+            }
+        });
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int sum = num1 - num2;
+                intent.putExtra("sum", sum);
+                openActivityMain();
+            }
+        });
     }
 
     public void openActivityMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(Activity2.this, MainActivity.class);
         startActivity(intent);
     }
 }

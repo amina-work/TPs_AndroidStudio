@@ -32,11 +32,18 @@ public class MainActivity extends AppCompatActivity {
                 openActivity2();
             }
         });
+
+        Intent intent = getIntent();
+        int sum = intent.getIntExtra("sum", 0);
+        result.setText("La Reponse:" + String.valueOf(sum));
     }
 
     public void openActivity2() {
-        Intent intent = new Intent(this, Activity2.class);
-        intent.putExtra("n1", n1);
+        Intent intent = new Intent(MainActivity.this, Activity2.class);
+        int num1 = Integer.parseInt(n1.getText().toString());
+        int num2 = Integer.parseInt(n2.getText().toString());
+        intent.putExtra("n1", num1);
+        intent.putExtra("n2", num2);
         startActivity(intent);
     }
 }
