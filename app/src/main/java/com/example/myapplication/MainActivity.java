@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText n1;
     private EditText n2;
-    private TextView result;
     private Button btn;
 
     @Override
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         n1 = (EditText)findViewById(R.id.num1);
         n2 = (EditText)findViewById(R.id.num2);
-        result = (TextView)findViewById(R.id.result);
 
         btn = (Button)findViewById(R.id.goNext);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -32,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
                 openActivity2();
             }
         });
-
-        Intent intent = getIntent();
-        int sum = intent.getIntExtra("sum", 0);
-        result.setText("La Reponse:" + String.valueOf(sum));
     }
 
     public void openActivity2() {

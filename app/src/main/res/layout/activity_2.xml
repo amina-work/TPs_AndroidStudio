@@ -25,8 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="240dp"
-        android:text="Multiply"
-        android:backgroundTint="@color/material_dynamic_primary40" />
+        android:text="Multiply" />
 
     <Button
         android:id="@+id/add"
@@ -34,8 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="320dp"
-        android:text="Add"
-        android:backgroundTint="@color/material_dynamic_primary40"/>
+        android:text="Add" />
 
     <Button
         android:id="@+id/sub"
@@ -43,18 +41,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
-        android:text="Subtract"
-        android:backgroundTint="@color/material_dynamic_primary40"/>
+        android:text="Subtract" />
 
-    <Button
-        android:id="@+id/goBack"
+    <TextView
+        android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="100dp"
-        android:text="Go Back" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp" />
 
 
 </RelativeLayout>
