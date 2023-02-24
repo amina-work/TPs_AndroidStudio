@@ -9,6 +9,9 @@ import android.widget.Button;
 
 public class Activity2 extends AppCompatActivity {
 
+    private Button add;
+    private Button mul;
+    private Button sub;
     private Button btn;
 
     @Override
