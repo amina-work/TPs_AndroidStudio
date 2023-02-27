@@ -13,7 +13,6 @@ public class Activity2 extends AppCompatActivity {
     private Button add;
     private Button mul;
     private Button sub;
-    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,6 @@ public class Activity2 extends AppCompatActivity {
         add = (Button)findViewById(R.id.add);
         mul = (Button)findViewById(R.id.mul);
         sub = (Button)findViewById(R.id.sub);
-        result = (TextView)findViewById(R.id.result);
 
         Intent intent = getIntent();
         int num1 = intent.getIntExtra("n1", 0); //default value is necessary for code to work
@@ -34,27 +32,33 @@ public class Activity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int sum = num1 + num2;
-                result.setText("La Reponse:" + String.valueOf(sum));
+                Intent intent = new Intent(Activity2.this, MainActivity.class);
+                intent.putExtra("sum", sum);
+                setResult(1, intent);
+                finish();
             }
         });
         mul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int sum = num1 * num2;
-                result.setText("La Reponse:" + String.valueOf(sum));
+                Intent intent = new Intent(Activity2.this, MainActivity.class);
+                intent.putExtra("sum", sum);
+                setResult(2, intent);
+                finish();
             }
         });
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int sum = num1 - num2;
-                result.setText("La Reponse:" + String.valueOf(sum));
+                Intent intent = new Intent(Activity2.this, MainActivity.class);
+                intent.putExtra("sum", sum);
+                setResult(3, intent);
+                finish();
             }
         });
     }
 
-    public void openActivityMain() {
-        Intent intent = new Intent(Activity2.this, MainActivity.class);
-        startActivity(intent);
-    }
+
 }
