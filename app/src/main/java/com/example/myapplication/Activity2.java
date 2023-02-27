@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Activity2 extends AppCompatActivity {
 
@@ -36,31 +37,26 @@ public class Activity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int sum = num1 + num2;
-                //result.setText("La Reponse:" + String.valueOf(sum));
-                openActivityMain();
+                result.setText("La Reponse:" + String.valueOf(sum));
+                Toast.makeText(Activity2.this, "sum", Toast.LENGTH_SHORT).show();
             }
         });
         mul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int sum = num1 * num2;
-                //result.setText("La Reponse:" + String.valueOf(sum));
-                openActivityMain();
+                result.setText("La Reponse:" + String.valueOf(sum));
+                Toast.makeText(Activity2.this, "mul", Toast.LENGTH_SHORT).show();
             }
         });
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int sum = num1 - num2;
-                //result.setText("La Reponse:" + String.valueOf(sum));
-                openActivityMain();
+                result.setText("La Reponse:" + String.valueOf(sum));
+                Toast.makeText(Activity2.this, "sub", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void openActivityMain() {
-        Intent intent = new Intent(Activity2.this, MainActivity.class);
-        int sum = Integer.parseInt(sum.toString());
-        startActivity(intent);
-    }
 }
