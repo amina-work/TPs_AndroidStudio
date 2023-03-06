@@ -24,8 +24,8 @@ public class Activity2 extends AppCompatActivity {
         sub = (Button)findViewById(R.id.sub);
 
         Intent intent = getIntent();
-        int num1 = intent.getIntExtra("n1", 0); //default value is necessary for code to work
-        int num2 = intent.getIntExtra("n2", 0);
+        int num1 = intent.getIntExtra("n1", -1); //default value is necessary for code to work
+        int num2 = intent.getIntExtra("n2", -1);
 
 
         add.setOnClickListener(new View.OnClickListener() {

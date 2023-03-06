@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Activity2.class);
-                int num1 = Integer.parseInt(n1.getText().toString());
-                int num2 = Integer.parseInt(n2.getText().toString());
-                intent.putExtra("n1", num1);
-                intent.putExtra("n2", num2);
+                intent.putExtra("n1", Integer.parseInt(n1.getText().toString()));
+                intent.putExtra("n2", Integer.parseInt(n2.getText().toString()));
                 startActivityForResult(intent, 100);
             }
         });
@@ -50,12 +49,15 @@ public class MainActivity extends AppCompatActivity {
 
         int sum = intent.getIntExtra("sum", 0);
         if (resultCode == 1){
+            Log.v("sum", String.valueOf((sum)));
             str += String.valueOf(sum);
         }
         if (resultCode == 2){
+            Log.v("sum", String.valueOf((sum)));
             str += String.valueOf(sum);
         }
         if (resultCode == 2){
+            Log.v("sum", String.valueOf((sum)));
             str += String.valueOf(sum);
         }
         Toast.makeText(this, sum, Toast.LENGTH_SHORT).show();
