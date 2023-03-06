@@ -9,58 +9,58 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText n1;
-    private EditText n2;
+    private TextView pr;
     private Button btn;
-    private TextView result;
-
+    private EditText txt;
+    private TextView rst;
+    private ProgressBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        n1 = (EditText)findViewById(R.id.num1);
-        n2 = (EditText)findViewById(R.id.num2);
-
-        btn = (Button)findViewById(R.id.goNext);
-        result = (TextView)findViewById(R.id.result);
-
+        pr = (TextView)findViewById(R.id.pr);
+        btn = (Button)findViewById(R.id.btn1);
+        rst = (TextView)findViewById(R.id.result);
+        txt = (EditText)findViewById(R.id.text1);
+        bar = (ProgressBar)findViewById(R.id.bar);
+        bar.setVisibility(View.GONE);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Activity2.class);
-                intent.putExtra("n1", Integer.parseInt(n1.getText().toString()));
-                intent.putExtra("n2", Integer.parseInt(n2.getText().toString()));
-                startActivityForResult(intent, 100);
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i=0;i<=40; i++){
+                            try{
+                                Thread.sleep(100);
+                            } catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+                            final int valeur = i;
+                            MainActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    pr.setText(valeur + "%");
+                                    bar.setVisibility(View.VISIBLE);
+                                    bar.setProgress(valeur);
+                                }
+                            });
+                        }
+                        bar.setVisibility(View.INVISIBLE);
+                    }
+                });
+                t.start();
             }
         });
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        String str = "La reponse: ";
-
-        int sum = intent.getIntExtra("sum", 0);
-        if (resultCode == 1){
-            Log.v("sum", String.valueOf((sum)));
-            str += String.valueOf(sum);
-        }
-        if (resultCode == 2){
-            Log.v("sum", String.valueOf((sum)));
-            str += String.valueOf(sum);
-        }
-        if (resultCode == 2){
-            Log.v("sum", String.valueOf((sum)));
-            str += String.valueOf(sum);
-        }
-        Toast.makeText(this, sum, Toast.LENGTH_SHORT).show();
-        result.setText(str);
-    }
 }
