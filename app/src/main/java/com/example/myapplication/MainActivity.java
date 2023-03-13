@@ -38,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                for(int i=0;i<=40; i++){
+                for(int i=0;i<=100; i++){
                     try{
                         Thread.sleep(100);
                     } catch (InterruptedException e){
                         e.printStackTrace();
                     }
+                    Log.i("IA4IoT", " "+i);
                     final int valeur = i;
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
