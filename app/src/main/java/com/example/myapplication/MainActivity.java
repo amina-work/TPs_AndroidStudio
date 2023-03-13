@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private TextView pr;
-    private Button btn;
+    //private Button btn;
     private EditText txt;
     private TextView rst;
     private ProgressBar bar;
@@ -27,40 +27,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pr = (TextView)findViewById(R.id.pr);
-        btn = (Button)findViewById(R.id.btn1);
+        //btn = (Button)findViewById(R.id.btn1);
         rst = (TextView)findViewById(R.id.result);
         txt = (EditText)findViewById(R.id.text1);
         bar = (ProgressBar)findViewById(R.id.bar);
         bar.setVisibility(View.GONE);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for(int i=0;i<=40; i++){
-                            try{
-                                Thread.sleep(100);
-                            } catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
-                            final int valeur = i;
-                            MainActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    pr.setText(valeur + "%");
-                                    bar.setVisibility(View.VISIBLE);
-                                    bar.setProgress(valeur);
-                                }
-                            });
-                        }
-                        bar.setVisibility(View.INVISIBLE);
-                    }
-                });
-                t.start();
-            }
-        });
-
     }
 
+    public void myThread(View v){
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=0;i<=40; i++){
+                    try{
+                        Thread.sleep(100);
+                    } catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    final int valeur = i;
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            pr.setText(valeur + "%");
+                            bar.setVisibility(View.VISIBLE);
+                            bar.setProgress(valeur);
+                        }
+                    });
+                }
+                bar.setVisibility(View.INVISIBLE);
+                String text = txt.getText().toString();
+                rst.setText(text);
+            }
+        });
+        t.start();
+    }
 }
