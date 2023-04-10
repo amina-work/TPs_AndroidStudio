@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void runthread(View view){
         final String s1 = "Bonjour le monde";
+        //the Handler Thread (unlike Async) is a lightweight thread used to update Interfaces
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
